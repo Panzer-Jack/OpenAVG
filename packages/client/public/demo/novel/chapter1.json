@@ -1,0 +1,531 @@
+{
+  "title": "第一章·杰西卡之乡",
+  "assets": {
+    "images": [
+      {
+        "name": "bg01",
+        "src": "demo/resource/images/bg/bg01.png"
+      },
+      {
+        "name": "bg02",
+        "src": "demo/resource/images/bg/bg02.png"
+      },
+      {
+        "name": "bg03",
+        "src": "demo/resource/images/bg/bg03.png"
+      },
+      {
+        "name": "bg04",
+        "src": "demo/resource/images/bg/bg04.png"
+      },
+      {
+        "name": "lun01a",
+        "src": "demo/resource/images/cg/lun01a.png"
+      },
+      {
+        "name": "lun01b",
+        "src": "demo/resource/images/cg/lun01b.png"
+      },
+      {
+        "name": "avatar大藏里香奈01",
+        "src": "demo/resource/images/avatar/大藏里香奈/01.png"
+      },
+      {
+        "name": "avatar大藏里香奈02",
+        "src": "demo/resource/images/avatar/大藏里香奈/02.png"
+      },
+      {
+        "name": "大藏里香奈01",
+        "src": "demo/resource/images/tachie/大藏里香奈/01.png"
+      },
+      {
+        "name": "大藏里香奈02",
+        "src": "demo/resource/images/tachie/大藏里香奈/02.png"
+      },
+      {
+        "name": "avatar山吹01",
+        "src": "demo/resource/images/avatar/山吹八千代/01.png"
+      },
+      {
+        "name": "avatar山吹02",
+        "src": "demo/resource/images/avatar/山吹八千代/02.png"
+      },
+      {
+        "name": "avatar山吹03",
+        "src": "demo/resource/images/avatar/山吹八千代/03.png"
+      },
+      {
+        "name": "avatar山吹04",
+        "src": "demo/resource/images/avatar/山吹八千代/04.png"
+      },
+      {
+        "name": "avatar山吹05",
+        "src": "demo/resource/images/avatar/山吹八千代/05.png"
+      },
+      {
+        "name": "山吹01",
+        "src": "demo/resource/images/tachie/山吹八千代/01.png"
+      },
+      {
+        "name": "山吹02",
+        "src": "demo/resource/images/tachie/山吹八千代/02.png"
+      },
+      {
+        "name": "山吹03",
+        "src": "demo/resource/images/tachie/山吹八千代/03.png"
+      },
+      {
+        "name": "山吹04",
+        "src": "demo/resource/images/tachie/山吹八千代/04.png"
+      },
+      {
+        "name": "山吹05",
+        "src": "demo/resource/images/tachie/山吹八千代/05.png"
+      }
+    ],
+    "audios": [
+      {
+        "name": "bgm00",
+        "src": "demo/resource/music/bgm00.ogg"
+      },
+      {
+        "name": "bgm01",
+        "src": "demo/resource/music/bgm01.ogg"
+      },
+      {
+        "name": "s01",
+        "src": "demo/resource/sound/s01.ogg"
+      }
+    ],
+    "voices": [
+      {
+        "name": "大藏里香奈01",
+        "src": "demo/resource/voice/大藏里香奈/01.ogg"
+      },
+      {
+        "name": "大藏里香奈02",
+        "src": "demo/resource/voice/大藏里香奈/02.ogg"
+      },
+      {
+        "name": "山吹01",
+        "src": "demo/resource/voice/山吹八千代/01.ogg"
+      },
+      {
+        "name": "山吹02",
+        "src": "demo/resource/voice/山吹八千代/02.ogg"
+      },
+      {
+        "name": "山吹03",
+        "src": "demo/resource/voice/山吹八千代/03.ogg"
+      },
+      {
+        "name": "山吹04",
+        "src": "demo/resource/voice/山吹八千代/04.ogg"
+      },
+      {
+        "name": "山吹05",
+        "src": "demo/resource/voice/山吹八千代/05.ogg"
+      },
+      {
+        "name": "山吹06",
+        "src": "demo/resource/voice/山吹八千代/06.ogg"
+      },
+      {
+        "name": "山吹07",
+        "src": "demo/resource/voice/山吹八千代/07.ogg"
+      },
+      {
+        "name": "山吹08",
+        "src": "demo/resource/voice/山吹八千代/08.ogg"
+      },
+      {
+        "name": "山吹09",
+        "src": "demo/resource/voice/山吹八千代/09.ogg"
+      },
+      {
+        "name": "山吹10",
+        "src": "demo/resource/voice/山吹八千代/10.ogg"
+      },
+      {
+        "name": "山吹11",
+        "src": "demo/resource/voice/山吹八千代/11.ogg"
+      },
+      {
+        "name": "山吹12",
+        "src": "demo/resource/voice/山吹八千代/12.ogg"
+      },
+      {
+        "name": "山吹13",
+        "src": "demo/resource/voice/山吹八千代/13.ogg"
+      },
+      {
+        "name": "山吹14",
+        "src": "demo/resource/voice/山吹八千代/14.ogg"
+      },
+      {
+        "name": "山吹15",
+        "src": "demo/resource/voice/山吹八千代/15.ogg"
+      },
+      {
+        "name": "山吹16",
+        "src": "demo/resource/voice/山吹八千代/16.ogg"
+      },
+      {
+        "name": "山吹17",
+        "src": "demo/resource/voice/山吹八千代/17.ogg"
+      },
+      {
+        "name": "山吹18",
+        "src": "demo/resource/voice/山吹八千代/18.ogg"
+      },
+      {
+        "name": "山吹19",
+        "src": "demo/resource/voice/山吹八千代/19.ogg"
+      },
+      {
+        "name": "山吹20",
+        "src": "demo/resource/voice/山吹八千代/20.ogg"
+      },
+      {
+        "name": "露娜01",
+        "src": "demo/resource/voice/樱小路露娜/01.ogg"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "name": "樱公馆之主",
+      "actions": [
+        {
+          "background": "bg01",
+          "speaker": "",
+          "sentence": "这是OpenAVG引擎一段测试内容（ 游戏截取自近月少女的礼仪 ）"
+        },
+        {
+          "speaker": "",
+          "sentence": "里香奈不愿意陪我一起去"
+        },
+        {
+          "speaker": "",
+          "sentence": "虽然我知道对面是什么人，但是在和她见面的时候我身边有没有里香奈陪着还是很不一样的。要是里香奈能来，我和对面不就更容易熟络了嘛。但是她说 — —"
+        },
+        {
+          "background": "bg02",
+          "music": { "name": "bgm00", "loop": true },
+          "images": [
+            { "name": "大藏里香奈01", "position": "center" }
+          ],
+          "speaker": {
+            "name": "大藏里香奈",
+            "avatars": ["avatar大藏里香奈01"],
+            "voice": "大藏里香奈01"
+          },
+          "sentence": "如果见面第一天聊聊就被发现你是男人，想瞒住三年是不可能的"
+        },
+        {
+          "images": [
+            { "name": "大藏里香奈02", "position": "center" }
+          ],
+          "speaker": {
+            "name": "大藏里香奈",
+            "avatars": ["avatar大藏里香奈02"],
+            "voice": "大藏里香奈02"
+          },
+          "sentence": "所以我不去帮你掩护，才是为了你好。你一个人去吧"
+        },
+        {
+          "background": "bg01",
+          "images": [],
+          "speaker": "",
+          "sentence": "这些就是她的说辞，不过我猜她单纯就是不想去。"
+        },
+        {
+          "speaker": "",
+          "sentence": "不过听了里香奈的话以后，我也隐隐约约感觉能理解她为什么不想去。"
+        },
+        {
+          "speaker": "",
+          "sentence": "我的妹妹似乎和小露（她的真名是樱小路露娜）虽然能在网上聊一夜。但是实在现实中见面坐在一起反而有时会无话可说。"
+        },
+        {
+          "speaker": "",
+          "sentence": "里香奈是个不好懂也难以取悦的姑娘。她时不时就会随着自己的心情在第二天说出和前一天完全相反的话。毕竟物以类聚人以群分，不知道这位樱小路露娜是不是也和她是同一类人。"
+        },
+        {
+          "speaker": "",
+          "sentence": "我只能一边祈祷着她不是这种人，以便根据便条上的地址来到她家。"
+        },
+        {
+          "speaker": "",
+          "sentence": "明明一直到她家门前我都是坐在车上的，可却紧张——不，是羞耻的不得了。以女孩子的打扮出门实在是太让我羞耻了。"
+        },
+        {
+          "speaker": "",
+          "sentence": "而且我还不光要以这副打扮去跟人见面和听你话。。。。。。更重要的是要接受面试。"
+        },
+        {
+          "speaker": "",
+          "sentence": "要是一见面马上就看穿是男人该怎么办，她肯定会把我当成大变态吧。真是太羞耻太令人紧张了。虽然我很想在进屋子之前去趟厕所，但我甚至没有勇气去周围转转寻找厕所在哪里。"
+        },
+        {
+          "music": { "name": "s01" },
+          "speaker": "",
+          "sentence": "哎，长痛不如短痛，只能下定决心了。"
+        },
+        {
+          "speaker": "",
+          "sentence": "好，我要上了。里香奈应该已经打过招呼说我要来了。等在我心里默念 1 2 3 之后就按门铃对讲机。。。。。。"
+        },
+        {
+          "speaker": "",
+          "sentence": "不过这个公馆周围院子里还真种了不少樱花树。想必等再过两个月之后，就算从围墙外也能看到樱花盛放的美景吧。"
+        },
+        {
+          "speaker": "",
+          "sentence": "是因为种满了樱花所以这里才被叫做樱公馆吗？还是说只是因为这间公馆的主人姓“樱小路”呢？"
+        },
+        {
+          "speaker": "",
+          "sentence": "不过我听说樱小路一族已经没落，而这公馆却明显有着与没落一族不相称的巨大占地面积。难道能维持这里全是靠那位和我同年的女性做证券交易得来的收入吗？"
+        },
+        {
+          "speaker": {
+            "name": "门铃",
+            "voice": "山吹01"
+          },
+          "sentence": "请问是哪位？"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日【大藏游星（真名）】"
+          },
+          "sentence": "我是大藏家介绍来面试的，叫小仓"
+        },
+        {
+          "speaker": {
+            "name": "门铃",
+            "voice": "山吹02"
+          },
+          "sentence": "哦，是说要来的小仓女士啊。请直接进到屋子门口来吧"
+        },
+        {
+          "speaker": "",
+          "sentence": "这家的女佣人接待我真是一丝不苟。不也不知道她是不是和我要当的女仆干同样工作的。"
+        },
+        {
+          "music": { "name": "bgm00", "stop": true },
+          "speaker": "",
+          "sentence": "我从大门那里走过长长的步道来到屋子的门前，还没做什么门就开了。也不知是有人站在门后等我，还是说这是感应到有人靠近就会自动开的自动门。"
+        },
+        {
+          "background": "bg03",
+          "music": { "name": "bgm01", "loop": true },
+          "images": [
+            { "name": "山吹01", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹01"],
+            "voice": "山吹03"
+          },
+          "sentence": "幸会，小仓朝日大人。感谢您今日特地抽空前来。本人便是这家的女仆长，名叫山吹"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日"
+          },
+          "sentence": "啊，您好"
+        },
+        {
+          "images": [
+            { "name": "山吹02", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹04"
+          },
+          "sentence": "？"
+        },
+        {
+          "speaker": "",
+          "sentence": "她45度弯着腰，然后没有起身，就这么抬起头用不可思议的表情看着我。"
+        },
+        {
+          "images": [
+            { "name": "山吹02", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹05"
+          },
+          "sentence": "我听说小仓大人今天来此是为了参加女仆面试的，难道不是吗？"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日"
+          },
+          "sentence": "啊，是。。。。。。是的。我听说的确是叫我来面试当女仆，应该是女仆吧。"
+        },
+        {
+          "images": [
+            { "name": "山吹03", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹03"]
+          },
+          "sentence": "。。。。。。"
+        },
+        {
+          "speaker": "",
+          "sentence": "她脸上的表情越发越莫名其妙，甚至惊讶地大大张开了嘴。难道是我做错了什么吗？"
+        },
+        {
+          "images": [
+            { "name": "山吹02", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹06"
+          },
+          "sentence": "虽然您还未与我们缔结雇佣契约，的确算是客人。。。。。。但假如您今天通过面试成为女仆，我就算是您的前辈了。没想到您一上来就说一句您好，排场可真大啊"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日"
+          },
+          "sentence": "啊！对、对不起，我失礼了！"
+        },
+        {
+          "speaker": "",
+          "sentence": "不好，我心态还没有换过来。准确地说是内心还没有完全转变成一个女仆。"
+        },
+        {
+          "speaker": "",
+          "sentence": "既然为了求职而来，就更要表现出相应的姿态才行。况且接下来马上就正式面世了，我这么放松可不行。"
+        },
+        {
+          "images": [
+            { "name": "山吹04", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹04"],
+            "voice": "山吹07"
+          },
+          "sentence": "我听说大藏家给我们介绍了一位可以信任的人选，还以为您一定经验丰富。。。。。。难道说您在之前的职场就是这个态度吗？那里对佣人的态度还真是宽容"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日"
+          },
+          "sentence": "这、这可真是不好意思，我只是因为紧张有些发愣！以后我会注意的！"
+        },
+        {
+          "images": [
+            { "name": "山吹02", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹08"
+          },
+          "sentence": "常言虽说人总是会犯一两次错。但既然被人雇佣，就不能容许自己有这样的想法"
+        },
+        {
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹9"
+          },
+          "sentence": "能容许一两次失败只是因为犯错的时候刚好处于宽容的环境。而有些时候，不管多细微的实物都可能成为一生之耻的"
+        },
+        {
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹02"],
+            "voice": "山吹10"
+          },
+          "sentence": "不管是待人还是在人生仅有一次大显身手的时刻，亦或者是面试时都应认真谨慎。虽然雇不雇佣你全凭大小姐判断，但如若她征询我的意见，我会明确告诉她，你并不适合这里"
+        },
+        {
+          "speaker": "",
+          "sentence": "啊！她是那种会对初次见面的人用说教来下马威的人啊！我感觉自己的未来已经是一片黑暗啦！"
+        },
+        {
+          "speaker": "",
+          "sentence": "假如不被樱小路家雇佣，我就没法去学校上学。可这里的女仆长在还没面试开始前就对我印象差到不能再差了。而且万一就算我成功通过面试，她肯定也会对我超严厉。"
+        },
+        {
+          "images": [
+            { "name": "山吹05", "position": "center" }
+          ],
+          "speaker": {
+            "name": "山吹",
+            "avatars": ["avatar山吹05"],
+            "voice": "山吹11"
+          },
+          "sentence": "那么我们走吧。请来这边"
+        },
+        {
+          "speaker": {
+            "name": "小仓朝日"
+          },
+          "sentence": "好的。。。。。。还请您多指教"
+        },
+        {
+          "images": [],
+          "music": { "name": "bgm01", "stop": true },
+          "speaker": "",
+          "sentence": "她刚刚明明说了类似“人生没有第二次机会”一样的话，可却没有当场把我赶回去。说不定她其实是个刀子嘴豆腐心的人。"
+        },
+        {
+          "speaker": "",
+          "sentence": "我在心里默默发誓可要万分注意不能再犯类似错误。毕竟这可关乎我的将来。"
+        },
+        {
+          "background": "lun01a",
+          "speaker": {
+            "name": "樱小路露娜",
+            "voice": "露娜01"
+          },
+          "sentence": "通过"
+        },
+        {
+          "speaker": "",
+          "sentence": "我还一句话都没有说呢"
+        },
+        {
+          "speaker": "",
+          "sentence": "还没等我打招呼，甚至名字都没说，面试我的人就宣布我通过了。这算是我又失礼了吗？如果算的话，那我刚发完誓就马上又犯错了。"
+        },
+        {
+          "speaker": "",
+          "sentence": "可是我前脚刚迈进面试的房间，她就宣布我通过了。情急之下我也不知道该说什么好，带我过来的女仆长也惊讶的说不出话来。"
+        },
+        {
+          "speaker": "",
+          "sentence": "不过我还是把刚才许下的誓言贯彻到底吧。就当接下来说的话也关乎我的将来。"
+        }
+      ]
+    },
+    {
+      "name": "离场",
+      "actions": [
+        {
+          "speaker": "",
+          "background": "",
+          "sentence": "这是来自近月少女的礼仪的截取的一部分内容 来展示本引擎的部分功能"
+        },
+        {
+          "speaker": "",
+          "background": "",
+          "sentence": "其他内容（包括2D RPG部分）正在逐步开发中，请尽情期待！ "
+        }
+      ]
+    }
+  ]
+}

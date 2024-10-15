@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="/vite.svg"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>OpenAVG</title>
+
+        <style type="text/css">
+            :root {
+                --transformScale: 1;
+                --positionWidth: 1920px;
+                --positionHeight: 1080px;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ._container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                height: 100vh;
+                width: 100vw;
+                background-color: black;
+            }
+
+            ._position {
+                width: var(--positionWidth);
+                height: var(--positionHeight);
+            }
+
+            ._box {
+                height: 1080px;
+                width: 1920px;
+                background-color: black;
+                transform: scale(var(--transformScale));
+                transform-origin: 0% 0%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 为了获取屏幕宽高添加的元素 -->
+        <div class="_container">
+            <!-- 为了定位添加的元素 -->
+            <div class="_position">
+                <div class="_box">
+                    <div id="root"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // 全局缩放比基础宽
+            const width = 1920
+            // 全局缩放比基础高
+            const height = 1080
+            // 宽高比
+            const ratio = 16 / 9
+
+            const getBaseScale = () => {
+                const element = document.getElementsByClassName('_container')[0]
+                // 获取可视区域的宽度
+                const w = element.clientWidth
+                // 获取可视区域的高
+                const h = element.clientHeight
+                // 根据宽高计算比例
+                let s = 1
+                if (w / h >= ratio) {
+                    // 设备左右留白 以高度为基础计算缩放比
+                    s = h / height
+                } else {
+                    s = w / width
+                }
+
+                const pw = s * 1920 + 'px'
+                const ph = s * 1080 + 'px'
+
+                // 赋值
+                document
+                    .getElementsByTagName('body')[0]
+                    .style.setProperty('--transformScale', s)
+                document
+                    .getElementsByTagName('body')[0]
+                    .style.setProperty('--positionWidth', pw)
+                document
+                    .getElementsByTagName('body')[0]
+                    .style.setProperty('--positionHeight', ph)
+            }
+
+            // 窗口变化
+            onresize = getBaseScale
+
+            // 加载
+            onload = getBaseScale
+        </script>
+
+        <script
+            type="module"
+            src="/src/main.tsx"
+        ></script>
+    </body>
+</html>

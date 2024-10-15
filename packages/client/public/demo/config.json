@@ -1,0 +1,33 @@
+{
+  "title": "近月少女的礼仪",
+  "favicon": "demo/favicon.ico",
+  "assets": {
+    "images": [
+      {
+        "name": "main-menu",
+        "src": "demo/resource/images/mainMenu.jpg"
+      },
+      {
+        "name": "title",
+        "src": "demo/resource/images/title.png"
+      },
+      {
+        "name": "spec-effect",
+        "src": "demo/resource/images/specEffect.png"
+      }
+    ],
+    "audios": [
+      {
+        "name": "main-menu",
+        "src": "demo/resource/music/mainMenu.ogg"
+      }
+    ],
+    "videos": [
+      {
+        "name": "before-main",
+        "src": "demo/resource/video/beforeMain.mp4"
+      }
+    ],
+    "voices": []
+  }
+}

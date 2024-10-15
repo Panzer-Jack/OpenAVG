@@ -1,0 +1,33 @@
+{
+  "name": "@openavg/core",
+  "type": "module",
+  "version": "1.0.0",
+  "author": {
+    "name": "Panzer_Jack",
+    "email": "panzer_jack@panzer-jack.cn",
+    "url": "https://www.panzer-jack.cn"
+  },
+  "license": "MPL-2.0",
+  "homepage": "",
+  "repository": "https://github.com/Panzer-Jack/OpenAVG.git",
+  "keywords": [
+    "openavg",
+    "avg",
+    "core"
+  ],
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@openavg/types": "workspace:*",
+    "@pixi/layout": "^2.0.1",
+    "@pixi/sound": "^6.0.1",
+    "@pixi/ui": "^2.1.5",
+    "@tweenjs/tween.js": "^25.0.0",
+    "pixi-filters": "^6.0.5",
+    "pixi.js": "^8.4.1"
+  }
+}

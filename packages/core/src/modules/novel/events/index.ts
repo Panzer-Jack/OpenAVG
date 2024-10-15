@@ -1,0 +1,2 @@
+import './resizeBg'
+import './sceneClick'

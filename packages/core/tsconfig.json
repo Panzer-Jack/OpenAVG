@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "declaration": true
+  },
+  "splitting": true,
+  "sourcemap": true,
+  "include": ["src/**/*.ts", "src/utils/1.js"]
+}
