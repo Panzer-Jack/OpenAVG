@@ -6,4 +6,4 @@
 [游戏测试](https://demo.openavg.panzer-jack.cn/)
 
 ## 待完善ing
-[引擎文档](https://demo.openavg.panzer-jack.cn/)
+[引擎文档](https://doc.openavg.panzer-jack.cn/)
