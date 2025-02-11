@@ -19,21 +19,25 @@ export type IEvent<T> = ({
   stageManager: T
 }) => void
 
+export interface IAssets {
+  images?: IAsset[]
+  audios?: IAsset[]
+  voices?: IAsset[]
+  videos?: IAsset[]
+
+}
+
 export interface IGlobalConfig {
   title: string
 
   favicon: string
 
-  assets: {
-    images: IAsset[]
-    audios: IAsset[]
-    voices: IAsset[]
-    videos: IAsset[]
-  }
+  assets: IAssets
 }
 
 export interface IApiCore {
   fetchGlobalConfig: () => Promise<IGlobalConfig>
   fetchChapter: ({ name }: { name: string }) => Promise<IChapter>
+  fetchChapterAssets: () => Promise<IAssets>
   [name: string]: (params: any) => Promise<any>
 }

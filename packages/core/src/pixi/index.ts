@@ -23,8 +23,7 @@ export class PixiInstance {
         extensions.add(soundAsset)
         initDevtools({ app: this.app })
       }
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    } catch(error) {
+    } catch (error) {
       // console.log(err)
     } finally {
       this.app.resize()
@@ -53,7 +52,6 @@ export class PixiInstance {
       if (canvas && canvas.parentNode != null) {
         isInit = true
       }
-    // eslint-disable-next-line unused-imports/no-unused-vars
     } catch (error) {
       isInit = false
     }

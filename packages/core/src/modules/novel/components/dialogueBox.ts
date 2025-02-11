@@ -46,11 +46,12 @@ export class DialogueBox {
 
   // 渲染
   render() {
-    setTimeout(() => {
-      if (!this.isRendered) {
-        this._render()
-      }
-    })
+    console.log('render')
+
+    if (!this.isRendered) {
+      console.log('render')
+      this._render()
+    }
   }
 
   // 渲染对话框
@@ -120,7 +121,7 @@ export class DialogueBox {
     })
     this.sentenceText.x = this.speakerNameText.position.x
     this.sentenceText.y
-            = this.speakerNameText.position.y + this.fontSize + 20
+      = this.speakerNameText.position.y + this.fontSize + 20
 
     // 渲染
     this.container.addChild(this.box)
@@ -132,6 +133,7 @@ export class DialogueBox {
 
   // 更新对话框的内容
   updateDialogue({ speaker, sentence }: ITalk) {
+    console.log('xx:', this.speakerNameText)
     if (speaker.avatars.length) {
       this.showAvator(speaker.avatars)
     }

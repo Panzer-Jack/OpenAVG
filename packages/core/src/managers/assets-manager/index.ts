@@ -1,10 +1,13 @@
-import type { IChapter, IGlobalConfig } from '@openavg/types'
-import { Assets } from 'pixi.js'
+import type { IAssets, IGlobalConfig } from '@openavg/types'
 
+import type { Application } from 'pixi.js'
+import { Assets } from 'pixi.js'
+import { GlobalProgressBar } from '../../components/progressBar'
 import { StageType } from '../../constants'
 import { AssetsPacks } from './assetsConfig'
 
 class AssetsManager {
+  app: Application
   isInitialized = false
   isLoading = false
   isUnloading = false
@@ -32,7 +35,8 @@ class AssetsManager {
     }
   }
 
-  init() {
+  init(app: Application) {
+    this.app = app
     return this
   }
 
@@ -75,11 +79,11 @@ class AssetsManager {
 
   async loadAssets({
     type,
-        chapter,
-        globalConfig,
+    assets,
+    globalConfig,
   }: {
     type: StageType
-    chapter?: IChapter
+    assets?: IAssets
     globalConfig?: IGlobalConfig
   }) {
     return new Promise<void>((resolve) => {
@@ -87,38 +91,64 @@ class AssetsManager {
         return
       this.isLoading = true
       let _assetsPacks: AssetsPacks
+      let progressBarText: string = '加载中...'
 
       switch (type) {
         case StageType.GLOBAL:
           _assetsPacks = this.assetsPacks[StageType.GLOBAL]
           _assetsPacks.loadGlobalConfig({ globalConfig })
+          progressBarText = '加载全局配置文件...'
           break
         case StageType.NOVEL:
           _assetsPacks = this.assetsPacks[StageType.NOVEL]
-          _assetsPacks.loadConfig({ chapter })
+          _assetsPacks.loadConfig({ assets })
+          progressBarText = '加载视觉小说资源...'
           break
         case StageType.GAME_2D:
           _assetsPacks = this.assetsPacks[StageType.GAME_2D]
+          progressBarText = '加载游戏资源...'
           break
         case StageType.GAME_3D:
           _assetsPacks = this.assetsPacks[StageType.GAME_3D]
+          progressBarText = '加载游戏资源...'
           break
         default:
           _assetsPacks = this.assetsPacks[StageType.NOVEL]
-          _assetsPacks.loadConfig({ chapter })
+          _assetsPacks.loadConfig({ assets })
+          progressBarText = '加载视觉小说资源...'
           break
       }
-      // 加载各个分包
+
+      const progressBar = new GlobalProgressBar(
+        this.app.stage,
+        {
+          fillColor: '#00b1dd',
+          borderColor: '#FFFFFF',
+          backgroundColor: '#fe6048',
+          value: 0,
+          width: 1000,
+          height: 50,
+          radius: 25,
+          border: 3,
+          animate: true,
+          vertical: false,
+          text: '加载中...',
+        },
+      )
       _assetsPacks
         .loadAllPacks({
           async loadBundle(bundleName, bundleContents) {
             Assets.addBundle(bundleName, bundleContents)
-            const loadedBundle = await Assets.loadBundle(bundleName)
+            const loadedBundle = await Assets.loadBundle(bundleName, (progress) => {
+              console.log('progress', progress)
+              progressBar.update(progress * 100, progressBarText)
+            })
             _assetsPacks[bundleName] = loadedBundle
           },
         })
         .then(() => {
           this.isLoading = false
+          progressBar.remove()
           resolve()
         })
     })

@@ -49,11 +49,6 @@ export class SceneManager {
       // 渲染对话框
       this.dialogueBox.render()
 
-      await assetsManager.loadAssets({
-        type: StageType.NOVEL,
-        chapter,
-      })
-
       this.changeScene(scenes[0])
       await this.nextAction()
     }
@@ -70,7 +65,7 @@ export class SceneManager {
     }
     const actions = currentScene.actionsList[currentScene.currentActionsId]
     // 处理actions指令
-    if (!this.isExecuting) { 
+    if (!this.isExecuting) {
       this.isExecuting = true
       await execActions({ actions })
       currentScene.currentActionsId++

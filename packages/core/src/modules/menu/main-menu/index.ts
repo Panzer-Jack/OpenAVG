@@ -40,12 +40,12 @@ class MainMenu {
   private isRender = false
   btnLock = false
 
-  constructor() {}
+  constructor() { }
 
   init({
     app,
-        fatherContainer,
-        assetsPack,
+    fatherContainer,
+    assetsPack,
   }: {
     app: Application
     fatherContainer: Container
@@ -81,7 +81,7 @@ class MainMenu {
     if (!this.isRender) {
       console.error('render!')
       const mainMenuBgTexture
-                = this.assetsPack.SPRITE_TEXTURE['main-menu']
+        = this.assetsPack.SPRITE_TEXTURE['main-menu']
       const titleTextrue = this.assetsPack.SPRITE_TEXTURE.title
       const mainMenuMusic = this.assetsPack.GAME_AUDIO['main-menu']
       const mainMenuBgSprite = new Sprite(mainMenuBgTexture)
@@ -171,7 +171,7 @@ class MainMenu {
 
   buttonRender({
     row1,
-        row2,
+    row2,
   }: {
     row1: CommonButton[]
     row2: CommonButton[]

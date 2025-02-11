@@ -1,4 +1,4 @@
-import type { IApiCore, IGlobalConfig, IStages } from '@openavg/types'
+import type { IApiCore, IAssets, IGlobalConfig, IStages } from '@openavg/types'
 import type { Application } from 'pixi.js'
 import { Container, Sprite } from 'pixi.js'
 
@@ -7,10 +7,10 @@ import { assetsManager } from '../managers/assets-manager'
 import { effectsManager } from '../managers/effects-manager'
 import { eventManager } from '../managers/event-manager'
 import { tickerManager } from '../managers/ticker-manager'
-import { StageType } from './../constants'
+import { ApiEnum, StageType } from './../constants'
 import { MenuLayerManager } from './menu-layer'
-import { NovelLayerManager } from './novel-layer'
 
+import { NovelLayerManager } from './novel-layer'
 import '../effects'
 
 export class StageManager {
@@ -38,7 +38,7 @@ export class StageManager {
   beforeRenderCb = new Set<() => void>()
   afterRenderCb = new Set<() => void>()
 
-  constructor() {}
+  constructor() { }
 
   async init(app: Application, globalConfig: IGlobalConfig) {
     this.app = app
@@ -46,10 +46,18 @@ export class StageManager {
     this.globalConfig = globalConfig
 
     // 初始化 资源管理器
-    this.assetsManager = assetsManager.init()
+    this.assetsManager = assetsManager.init(this.app)
+    const chapterAssets = await apiManager.fetch({
+      name: ApiEnum.fetchChapterAssets,
+    })
     await this.assetsManager.loadAssets({
       type: StageType.GLOBAL,
       globalConfig: this.globalConfig,
+    })
+
+    await assetsManager.loadAssets({
+      type: StageType.NOVEL,
+      assets: chapterAssets,
     })
 
     // 初始化 Ticker管理器
@@ -80,7 +88,7 @@ export class StageManager {
 
     // 初始化出场动画
     const videoTextrue
-            = this.assetsManager.assetsPacks.GLOBAL.VIDEO_TEXTURE['before-main']
+      = this.assetsManager.assetsPacks.GLOBAL.VIDEO_TEXTURE['before-main']
     if (videoTextrue) {
       this.videoSprite = new Sprite(
         this.assetsManager.assetsPacks.GLOBAL.VIDEO_TEXTURE[

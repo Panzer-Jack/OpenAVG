@@ -34,7 +34,6 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
       speaker.voice = voiceSprite
     }
   }
-  console.log(speaker, sentence)
   sceneManager.dialogueBox.updateDialogue({
     speaker,
     sentence,

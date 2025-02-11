@@ -8,4 +8,5 @@ export enum StageType {
 export enum ApiEnum {
   fetchGlobalConfig = 'fetchGlobalConfig',
   fetchChapter = 'fetchChapter',
+  fetchChapterAssets = 'fetchChapterAssets',
 }

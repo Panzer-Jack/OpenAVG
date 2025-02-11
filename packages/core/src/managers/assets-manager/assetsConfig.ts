@@ -1,4 +1,4 @@
-import type { IChapter, IGlobalConfig } from '@openavg/types'
+import type { IAssets, IChapter, IGlobalConfig } from '@openavg/types'
 import type { Sound } from '@pixi/sound'
 import type { Texture } from 'pixi.js'
 import { isEmpty } from 'lodash'
@@ -29,7 +29,7 @@ export class AssetsPacks {
   /** 资源类型 */
   type: StageType
   /** 资源名 */
-  name: string
+  // name: string
   /** 子包：游戏音频 */
   GAME_AUDIO = {} as Record<keyof IPackGameAudio, Sound>
   /** 子包：角色声音 */
@@ -72,19 +72,19 @@ export class AssetsPacks {
     }
   }
 
-  loadConfig({ chapter }: { chapter?: IChapter }) {
+  loadConfig({ assets }: { assets?: IAssets }) {
     if (this.type === StageType.NOVEL) {
-      this.name = chapter.title
-      chapter.assets.images.forEach((image) => {
+      // this.name = chapter.title
+      assets.images.forEach((image) => {
         this.spriteTextrueRaw[image.name] = image.src
       })
-      chapter.assets.audios.forEach((music) => {
+      assets.audios.forEach((music) => {
         this.gameAudioRaw.push({
           alias: music.name,
           src: music.src,
         })
       })
-      chapter.assets.voices.forEach((voice) => {
+      assets.voices.forEach((voice) => {
         this.characterSoundRaw.push({
           alias: voice.name,
           src: voice.src,

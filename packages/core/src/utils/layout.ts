@@ -21,16 +21,22 @@ export function centerView({
   pos = 'all',
   view,
   target,
+  global = false,
 }: {
   pos?: 'x' | 'y' | 'all'
   view: Container | Sprite
   target: Container | Sprite
+  global?: boolean
 }) {
-  if (pos === 'x' || pos === 'all') {
-    view.position.x = (target.width - view.width) / 2
-    console.log(view.position.x)
-  }
-  if (pos === 'y' || pos === 'all') {
-    view.position.y = (target.height - view.height) / 2
+  if (global) {
+    view.position.x = (1920 - view.width) / 2
+    view.position.y = (1080 - view.height) / 2
+  } else {
+    if (pos === 'x' || pos === 'all') {
+      view.position.x = (target.width - view.width) / 2
+    }
+    if (pos === 'y' || pos === 'all') {
+      view.position.y = (target.height - view.height) / 2
+    }
   }
 }
