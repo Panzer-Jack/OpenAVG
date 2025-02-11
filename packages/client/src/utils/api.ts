@@ -7,3 +7,8 @@ export async function fetchChapter({ name }: { name: string }) {
   const res = await fetch(`/demo/novel/${name}.json`)
   return res.json()
 }
+
+export async function fetchChapterAssets() {
+  const res = await fetch(`/demo/novel/assets.json`)
+  return res.json()
+}

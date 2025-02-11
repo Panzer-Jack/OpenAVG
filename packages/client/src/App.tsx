@@ -1,7 +1,7 @@
 import { Stage } from '@/stage'
 import { useGlobalConfig, useLoader, useManagers } from '@/store'
 
-import { fetchChapter, fetchGlobalConfig } from '@/utils/api'
+import { fetchChapter, fetchChapterAssets, fetchGlobalConfig } from '@/utils/api'
 import { openAVGCore } from '@openavg/core'
 import { useCallback, useEffect, useRef } from 'react'
 
@@ -22,6 +22,7 @@ function StartGame() {
       if (config) {
         await openAVGCore.init(config, {
           fetchChapter,
+          fetchChapterAssets,
           fetchGlobalConfig,
         })
         initManagers()

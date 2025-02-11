@@ -1,0 +1,192 @@
+{
+  "images": [
+    {
+      "name": "bg01",
+      "src": "demo/resource/images/bg/bg01.png"
+    },
+    {
+      "name": "bg02",
+      "src": "demo/resource/images/bg/bg02.png"
+    },
+    {
+      "name": "bg03",
+      "src": "demo/resource/images/bg/bg03.png"
+    },
+    {
+      "name": "bg04",
+      "src": "demo/resource/images/bg/bg04.png"
+    },
+    {
+      "name": "lun01a",
+      "src": "demo/resource/images/cg/lun01a.png"
+    },
+    {
+      "name": "lun01b",
+      "src": "demo/resource/images/cg/lun01b.png"
+    },
+    {
+      "name": "avatar大藏里香奈01",
+      "src": "demo/resource/images/avatar/大藏里香奈/01.png"
+    },
+    {
+      "name": "avatar大藏里香奈02",
+      "src": "demo/resource/images/avatar/大藏里香奈/02.png"
+    },
+    {
+      "name": "大藏里香奈01",
+      "src": "demo/resource/images/tachie/大藏里香奈/01.png"
+    },
+    {
+      "name": "大藏里香奈02",
+      "src": "demo/resource/images/tachie/大藏里香奈/02.png"
+    },
+    {
+      "name": "avatar山吹01",
+      "src": "demo/resource/images/avatar/山吹八千代/01.png"
+    },
+    {
+      "name": "avatar山吹02",
+      "src": "demo/resource/images/avatar/山吹八千代/02.png"
+    },
+    {
+      "name": "avatar山吹03",
+      "src": "demo/resource/images/avatar/山吹八千代/03.png"
+    },
+    {
+      "name": "avatar山吹04",
+      "src": "demo/resource/images/avatar/山吹八千代/04.png"
+    },
+    {
+      "name": "avatar山吹05",
+      "src": "demo/resource/images/avatar/山吹八千代/05.png"
+    },
+    {
+      "name": "山吹01",
+      "src": "demo/resource/images/tachie/山吹八千代/01.png"
+    },
+    {
+      "name": "山吹02",
+      "src": "demo/resource/images/tachie/山吹八千代/02.png"
+    },
+    {
+      "name": "山吹03",
+      "src": "demo/resource/images/tachie/山吹八千代/03.png"
+    },
+    {
+      "name": "山吹04",
+      "src": "demo/resource/images/tachie/山吹八千代/04.png"
+    },
+    {
+      "name": "山吹05",
+      "src": "demo/resource/images/tachie/山吹八千代/05.png"
+    }
+  ],
+  "audios": [
+    {
+      "name": "bgm00",
+      "src": "demo/resource/music/bgm00.ogg"
+    },
+    {
+      "name": "bgm01",
+      "src": "demo/resource/music/bgm01.ogg"
+    },
+    {
+      "name": "s01",
+      "src": "demo/resource/sound/s01.ogg"
+    }
+  ],
+  "voices": [
+    {
+      "name": "大藏里香奈01",
+      "src": "demo/resource/voice/大藏里香奈/01.ogg"
+    },
+    {
+      "name": "大藏里香奈02",
+      "src": "demo/resource/voice/大藏里香奈/02.ogg"
+    },
+    {
+      "name": "山吹01",
+      "src": "demo/resource/voice/山吹八千代/01.ogg"
+    },
+    {
+      "name": "山吹02",
+      "src": "demo/resource/voice/山吹八千代/02.ogg"
+    },
+    {
+      "name": "山吹03",
+      "src": "demo/resource/voice/山吹八千代/03.ogg"
+    },
+    {
+      "name": "山吹04",
+      "src": "demo/resource/voice/山吹八千代/04.ogg"
+    },
+    {
+      "name": "山吹05",
+      "src": "demo/resource/voice/山吹八千代/05.ogg"
+    },
+    {
+      "name": "山吹06",
+      "src": "demo/resource/voice/山吹八千代/06.ogg"
+    },
+    {
+      "name": "山吹07",
+      "src": "demo/resource/voice/山吹八千代/07.ogg"
+    },
+    {
+      "name": "山吹08",
+      "src": "demo/resource/voice/山吹八千代/08.ogg"
+    },
+    {
+      "name": "山吹09",
+      "src": "demo/resource/voice/山吹八千代/09.ogg"
+    },
+    {
+      "name": "山吹10",
+      "src": "demo/resource/voice/山吹八千代/10.ogg"
+    },
+    {
+      "name": "山吹11",
+      "src": "demo/resource/voice/山吹八千代/11.ogg"
+    },
+    {
+      "name": "山吹12",
+      "src": "demo/resource/voice/山吹八千代/12.ogg"
+    },
+    {
+      "name": "山吹13",
+      "src": "demo/resource/voice/山吹八千代/13.ogg"
+    },
+    {
+      "name": "山吹14",
+      "src": "demo/resource/voice/山吹八千代/14.ogg"
+    },
+    {
+      "name": "山吹15",
+      "src": "demo/resource/voice/山吹八千代/15.ogg"
+    },
+    {
+      "name": "山吹16",
+      "src": "demo/resource/voice/山吹八千代/16.ogg"
+    },
+    {
+      "name": "山吹17",
+      "src": "demo/resource/voice/山吹八千代/17.ogg"
+    },
+    {
+      "name": "山吹18",
+      "src": "demo/resource/voice/山吹八千代/18.ogg"
+    },
+    {
+      "name": "山吹19",
+      "src": "demo/resource/voice/山吹八千代/19.ogg"
+    },
+    {
+      "name": "山吹20",
+      "src": "demo/resource/voice/山吹八千代/20.ogg"
+    },
+    {
+      "name": "露娜01",
+      "src": "demo/resource/voice/樱小路露娜/01.ogg"
+    }
+  ]
+}
