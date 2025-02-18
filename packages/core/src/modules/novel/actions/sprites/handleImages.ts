@@ -18,6 +18,7 @@ export async function handleImages({
     sceneManager.currentScene.images.forEach((imageSprite) => {
       imageSprite.destroy()
     })
+    sceneManager.currentScene.imagesAction = []
   }
 
   for (let i = 0; i < assetName.length; i++) {
@@ -38,4 +39,5 @@ export async function handleImages({
   }
 
   sceneManager.currentScene.images = imagesSprite
+  sceneManager.currentScene.imagesAction = assetName
 }

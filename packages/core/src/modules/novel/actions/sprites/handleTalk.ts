@@ -14,6 +14,11 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
     avatars: [],
   }
 
+  // const speakerExp = {
+  //   voiceKey: null,
+  //   avatarsKey: [],
+  // }
+
   const sentence = assetName.sentence
   if (typeof assetName.speaker === 'string') {
     speaker.name = assetName.speaker
@@ -25,6 +30,7 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
         const avatorAsset = assetsPack.SPRITE_TEXTURE[avatar]
         const avatorSprite = new Sprite(avatorAsset)
         speaker.avatars.push(avatorSprite)
+        // speakerExp.avatarsKey.push(avatar)
       })
     }
 
@@ -32,6 +38,7 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
       const voiceSprite = assetsPack.CHARACTER_SOUND[assetName.speaker.voice]
       voiceSprite.play()
       speaker.voice = voiceSprite
+      // speakerExp.voiceKey = assetName.speaker.voice
     }
   }
   sceneManager.dialogueBox.updateDialogue({
@@ -46,11 +53,23 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
       currentScene.talk.speaker.avatars.forEach(avatar =>
         avatar.destroy(),
       )
+      // currentScene.info.actions.speaker.avatars = null
     }
     if (currentScene.talk.speaker.voice) {
-      currentScene.talk.speaker.voice.destroy()
+      currentScene.talk.speaker.voice.stop()
+      // currentScene.info.actions.speaker.voice = null
     }
   }
+
+  // currentScene.info.actions = {
+  //   ...currentScene.info.actions,
+  //   speaker: {
+  //     name: speaker.name,
+  //     voice: speakerExp.voiceKey,
+  //     avatars: speakerExp.avatarsKey,
+  //   },
+  //   sentence,
+  // }
 
   currentScene.talk = {
     speaker: {

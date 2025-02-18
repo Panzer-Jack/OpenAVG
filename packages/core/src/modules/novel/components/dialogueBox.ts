@@ -46,12 +46,22 @@ export class DialogueBox {
 
   // 渲染
   render() {
-    console.log('render')
-
     if (!this.isRendered) {
-      console.log('render')
       this._render()
     }
+  }
+
+  reset() {
+    this.container.removeChildren()
+    this.isRendered = false
+  }
+
+  hide() {
+    this.container.visible = false
+  }
+
+  show() {
+    this.container.visible = true
   }
 
   // 渲染对话框
@@ -71,7 +81,8 @@ export class DialogueBox {
       height: this.boxHeight,
       radius: 100,
     }
-    this.gradientFill = new FillGradient(0, 0, 0, canvasRect.height)
+
+    this.gradientFill = new FillGradient(0, 0, 0, 0.2)
     this.gradientFill.addColorStop(0, new Color('rgb(200, 200, 200, 0)'))
     this.gradientFill.addColorStop(0.5, new Color('rgb(0, 0, 0, 0.3)'))
     this.gradientFill.addColorStop(1, new Color('rgb(0, 0, 0, 0.8)'))
@@ -133,7 +144,6 @@ export class DialogueBox {
 
   // 更新对话框的内容
   updateDialogue({ speaker, sentence }: ITalk) {
-    console.log('xx:', this.speakerNameText)
     if (speaker.avatars.length) {
       this.showAvator(speaker.avatars)
     }

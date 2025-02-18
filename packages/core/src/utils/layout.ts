@@ -22,21 +22,23 @@ export function centerView({
   view,
   target,
   global = false,
+  offset = { x: 0, y: 0 }, // 新增偏移参数
 }: {
   pos?: 'x' | 'y' | 'all'
   view: Container | Sprite
   target: Container | Sprite
   global?: boolean
+  offset?: { x: number, y: number } // 偏移类型
 }) {
   if (global) {
-    view.position.x = (1920 - view.width) / 2
-    view.position.y = (1080 - view.height) / 2
+    view.position.x = (1920 - view.width) / 2 + offset.x
+    view.position.y = (1080 - view.height) / 2 + offset.y
   } else {
     if (pos === 'x' || pos === 'all') {
-      view.position.x = (target.width - view.width) / 2
+      view.position.x = (target.width - view.width) / 2 + offset.x
     }
     if (pos === 'y' || pos === 'all') {
-      view.position.y = (target.height - view.height) / 2
+      view.position.y = (target.height - view.height) / 2 + offset.y
     }
   }
 }

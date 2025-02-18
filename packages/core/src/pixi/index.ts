@@ -24,7 +24,7 @@ export class PixiInstance {
         initDevtools({ app: this.app })
       }
     } catch (error) {
-      // console.log(err)
+      console.warn(error)
     } finally {
       this.app.resize()
     }
@@ -54,6 +54,7 @@ export class PixiInstance {
       }
     } catch (error) {
       isInit = false
+      console.warn(error)
     }
 
     return isInit

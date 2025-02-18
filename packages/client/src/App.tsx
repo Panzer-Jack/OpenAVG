@@ -19,6 +19,7 @@ function StartGame() {
       isLoading.current = true
       const config = await fetchGlobalConfig()
       setGlobalConfig(config)
+
       if (config) {
         await openAVGCore.init(config, {
           fetchChapter,
@@ -31,7 +32,6 @@ function StartGame() {
     }
     isLoading.current = false
   }, [initManagers, setCoreOnload, setGlobalConfig])
-
   useEffect(() => {
     init()
   }, [init])

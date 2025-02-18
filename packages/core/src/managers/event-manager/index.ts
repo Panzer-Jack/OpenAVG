@@ -8,7 +8,7 @@ class EventManager {
   events: Map<string, IEvent<typeof stageManager>> = new Map()
   isActive = false
 
-  constructor() {}
+  constructor() { }
 
   init(app: Application) {
     this.app = app
@@ -17,6 +17,7 @@ class EventManager {
   }
 
   active() {
+    // 全局监听事件
     if (!this.isActive) {
       this.isActive = true
       this.events.forEach((event) => {
@@ -25,9 +26,18 @@ class EventManager {
     }
   }
 
+  emit(eventName: string, ...args: any) {
+    // 个别事件
+    this.events.get(eventName)?.({
+      app: this.app,
+      stageManager: this.stageManager,
+      ...args,
+    })
+  }
+
   install({
     name,
-        event,
+    event,
   }: {
     name: string
     event: IEvent<typeof stageManager>

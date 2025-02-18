@@ -8,5 +8,5 @@ export enum NovelActionType {
 export enum SceneClickEvents {
   skipType = 'skipType',
   nextScene = 'nextScene',
-  nextAction = 'nextAction',
+  nextActions = 'nextActions',
 }

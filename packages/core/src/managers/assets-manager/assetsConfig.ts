@@ -1,4 +1,4 @@
-import type { IAssets, IChapter, IGlobalConfig } from '@openavg/types'
+import type { IAssets, IGlobalConfig } from '@openavg/types'
 import type { Sound } from '@pixi/sound'
 import type { Texture } from 'pixi.js'
 import { isEmpty } from 'lodash'

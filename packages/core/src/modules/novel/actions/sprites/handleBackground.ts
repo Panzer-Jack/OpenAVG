@@ -33,6 +33,7 @@ export async function handleBackground({
       // 判定是否销毁精灵
       if (assetName === '') {
         sceneManager.currentScene.background.destroy()
+        sceneManager.currentScene.backgroundAction = null
       } else {
         if (typeof assetName === 'string') {
           bgAssets = hooks.assetsPack.SPRITE_TEXTURE[assetName]
@@ -61,8 +62,10 @@ export async function handleBackground({
         // 如果之前存在则销毁
         if (sceneManager.currentScene.background) {
           sceneManager.currentScene.background.destroy()
+          sceneManager.currentScene.backgroundAction = null
         }
         sceneManager.currentScene.background = bgSprite
+        sceneManager.currentScene.backgroundAction = assetName
         resolve()
       }
     }

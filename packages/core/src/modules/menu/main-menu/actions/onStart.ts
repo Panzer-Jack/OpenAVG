@@ -16,7 +16,7 @@ export async function onStart() {
       }),
       mainMenu.hide(),
     ])
-    await sceneManager.initChapter(chapter)
     stageManager.currentStage = StageType.NOVEL
+    await sceneManager.initChapter({ chapter })
   }
 }

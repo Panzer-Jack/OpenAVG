@@ -1,4 +1,4 @@
-import type { IApiCore, IAssets, IGlobalConfig, IStages } from '@openavg/types'
+import type { IApiCore, IGlobalConfig, IStages } from '@openavg/types'
 import type { Application } from 'pixi.js'
 import { Container, Sprite } from 'pixi.js'
 
@@ -15,7 +15,6 @@ import '../effects'
 
 export class StageManager {
   app: Application
-  currentStage: StageType
   globalConfig: IGlobalConfig
   apiCore: IApiCore
   stages: IStages
@@ -30,6 +29,7 @@ export class StageManager {
   apiManager = apiManager
   tickerManager = tickerManager
 
+  private _currentStage: StageType
   private isRender = false
   private videoSprite: Sprite | null
   private videoTimeout: NodeJS.Timeout | null
@@ -38,7 +38,18 @@ export class StageManager {
   beforeRenderCb = new Set<() => void>()
   afterRenderCb = new Set<() => void>()
 
+  lastStage: StageType = null
+
   constructor() { }
+
+  get currentStage() {
+    return this._currentStage
+  }
+
+  set currentStage(newVal) {
+    this._currentStage = newVal
+    this.eventManager.emit('currentStageUpdated')
+  }
 
   async init(app: Application, globalConfig: IGlobalConfig) {
     this.app = app

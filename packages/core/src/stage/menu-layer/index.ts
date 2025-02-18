@@ -4,12 +4,12 @@ import type { AssetsPacks } from '../../managers/assets-manager/assetsConfig'
 import { Container, Graphics } from 'pixi.js'
 
 import { assetsManager } from '../../managers/assets-manager'
-import { configMenu } from '../../modules/menu/config-menu'
-import { galleryMenu } from '../../modules/menu/gallery-menu'
-import { loadMenu } from '../../modules/menu/load-menu'
 import { mainMenu } from '../../modules/menu/main-menu'
 
-import { saveMenu } from '../../modules/menu/save-menu'
+// import { configMenu } from '../../modules/menu/config-menu'
+// import { galleryMenu } from '../../modules/menu/gallery-menu'
+// import { loadMenu } from '../../modules/menu/archive-menu'
+// import { saveMenu } from '../../modules/menu/save-menu'
 
 export class MenuLayerManager {
   app: Application
@@ -17,10 +17,10 @@ export class MenuLayerManager {
 
   menus: {
     mainMenu: typeof mainMenu
-    loadMenu: typeof loadMenu
-    saveMenu: typeof saveMenu
-    configMenu: typeof configMenu
-    galleyMenu: typeof galleryMenu
+    // loadMenu: typeof loadMenu
+    // saveMenu: typeof saveMenu
+    // configMenu: typeof configMenu
+    // galleyMenu: typeof galleryMenu
   }
 
   assetsManager: typeof assetsManager
@@ -49,34 +49,38 @@ export class MenuLayerManager {
         fatherContainer: this.container,
         assetsPack: this.assetsPack,
       }),
-      loadMenu: loadMenu.init({
-        app: this.app,
-        fatherContainer: this.container,
-        assetsPack: this.assetsPack,
-      }),
-      saveMenu: saveMenu.init({
-        app: this.app,
-        fatherContainer: this.container,
-        assetsPack: this.assetsPack,
-      }),
-      configMenu: configMenu.init({
-        app: this.app,
-        fatherContainer: this.container,
-        assetsPack: this.assetsPack,
-      }),
-      galleyMenu: galleryMenu.init({
-        app: this.app,
-        fatherContainer: this.container,
-        assetsPack: this.assetsPack,
-      }),
+      // loadMenu: loadMenu.init({
+      //   app: this.app,
+      //   fatherContainer: this.container,
+      //   assetsPack: this.assetsPack,
+      // }),
+      // saveMenu: saveMenu.init({
+      //   app: this.app,
+      //   fatherContainer: this.container,
+      //   assetsPack: this.assetsPack,
+      // }),
+      // configMenu: configMenu.init({
+      //   app: this.app,
+      //   fatherContainer: this.container,
+      //   assetsPack: this.assetsPack,
+      // }),
+      // galleyMenu: galleryMenu.init({
+      //   app: this.app,
+      //   fatherContainer: this.container,
+      //   assetsPack: this.assetsPack,
+      // }),
     }
     for (const key in this.menus) {
       this.container.addChild(this.menus[key].container)
     }
   }
 
-  async whiteBgHidden() {
+  whiteBgHidden() {
     this.whiteBg.visible = false
+  }
+
+  whiteBgShow() {
+    this.whiteBg.visible = true
   }
 
   async render() {

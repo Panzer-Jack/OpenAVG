@@ -1,15 +1,22 @@
 {
-  "title": "第一章·杰西卡之乡",
+  "filename": "chapter1",
+  "title": "第一章·樱公馆之主",
   "scenes": [
+    {
+      "name": "进场",
+      "actions": [
+        {
+          "speaker": "",
+          "sentence": "这是OpenAVG引擎一段测试内容（ 游戏截取自近月少女的礼仪 ）"
+        }
+      ]
+    },
     {
       "name": "樱公馆之主",
       "actions": [
         {
           "background": "bg01",
-          "speaker": "",
-          "sentence": "这是OpenAVG引擎一段测试内容（ 游戏截取自近月少女的礼仪 ）"
-        },
-        {
+          "images": [],
           "speaker": "",
           "sentence": "里香奈不愿意陪我一起去"
         },
@@ -325,7 +332,6 @@
       "actions": [
         {
           "speaker": "",
-          "background": "",
           "sentence": "这是来自近月少女的礼仪的截取的一部分内容 来展示本引擎的部分功能"
         },
         {

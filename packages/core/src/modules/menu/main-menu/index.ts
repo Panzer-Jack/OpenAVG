@@ -1,29 +1,24 @@
+import type { SaveDataList } from '@openavg/types'
 import type { Sound } from '@pixi/sound'
 import type { Application } from 'pixi.js'
+
 import type { AssetsPacks } from '../../../managers/assets-manager/assetsConfig'
-
 import { ButtonContainer } from '@pixi/ui'
-import { AlphaFilter, Container, Sprite } from 'pixi.js'
 
+import localforage from 'localforage'
+import { AlphaFilter, Container, Sprite } from 'pixi.js'
+import { openAVGCore } from '../../../../'
 import { CommonButton } from '../../../components/button'
 import { fadeIn, fadeOut } from '../../../filters/fade'
 import { scaleToNormal } from '../../../filters/zoom'
 import { assetsManager } from '../../../managers/assets-manager'
+
 import { effectsManager } from '../../../managers/effects-manager'
 import { tickerManager } from '../../../managers/ticker-manager'
 import { stageManager } from '../../../stage'
 import { centerView, row } from '../../../utils/layout'
-
 import { resizeToCanvas } from '../../../utils/resize'
-import {
-  onAFStory,
-  onConfig,
-  onContinue,
-  onExit,
-  onGallery,
-  onLoad,
-  onStart,
-} from './actions'
+import { actions } from './actions'
 import './events'
 
 class MainMenu {
@@ -39,6 +34,7 @@ class MainMenu {
 
   private isRender = false
   btnLock = false
+  btnRefresh: () => void
 
   constructor() { }
 
@@ -71,6 +67,9 @@ class MainMenu {
     })
     fadeInTween.start()
     zoomOutTween.start()
+    if (tickerManager.hasListener('showMainMenu')) {
+      tickerManager.removeListener('showMainMenu')
+    }
     tickerManager.addListener('showMainMenu', () => {
       fadeInTween.update()
       zoomOutTween.update()
@@ -79,7 +78,8 @@ class MainMenu {
 
   async render() {
     if (!this.isRender) {
-      console.error('render!')
+      const saveDataList: SaveDataList = await localforage.getItem(`${openAVGCore.gameTitle}-saveGame`)
+
       const mainMenuBgTexture
         = this.assetsPack.SPRITE_TEXTURE['main-menu']
       const titleTextrue = this.assetsPack.SPRITE_TEXTURE.title
@@ -108,50 +108,78 @@ class MainMenu {
 
       this.mainMenuBgSprite = mainMenuBgSprite
       this.mainMenuMusic = mainMenuMusic
-      this.buttonRender(this.defaultButtons())
+      this.buttonRender(this.defaultButtons(saveDataList))
       this.isRender = true
     }
   }
 
-  defaultButtons() {
+  defaultButtons(saveDataList: SaveDataList) {
     const continueBtn = new CommonButton({
       text: 'Continue',
-      disabled: true,
-      onClick: () => onContinue(),
+      disabled: !(saveDataList && saveDataList[0]),
+      size: 'big',
+      onClick: () => actions.onContinue(saveDataList[0]),
     })
     const startBtn = new CommonButton({
       text: 'Start',
-      onClick: () => onStart(),
+      size: 'big',
+      onClick: () => actions.onStart(),
     })
     const loadBtn = new CommonButton({
       text: 'Load',
-      disabled: true,
-      onClick: () => onLoad(),
+      size: 'big',
+      onClick: () => actions.onLoad(true),
     })
 
     const afStoryBtn = new CommonButton({
       text: 'AfterStory',
+      size: 'big',
       disabled: true,
-      onClick: () => onAFStory(),
+      onClick: () => actions.onAFStory(),
     })
     const galleryBtn = new CommonButton({
       text: 'Gallery',
+      size: 'big',
       disabled: true,
-      onClick: () => onGallery(),
+      onClick: () => actions.onGallery(),
     })
     const configBtn = new CommonButton({
       text: 'Config',
-      disabled: true,
-      onClick: () => onConfig(),
+      size: 'big',
+      // disabled: true,
+      onClick: () => actions.onConfig(),
     })
     const ExitBtn = new CommonButton({
       text: 'Exit',
-      onClick: () => onExit(),
+      size: 'big',
+      onClick: () => actions.onExit(),
     })
     return {
       row1: [continueBtn, startBtn, loadBtn],
       row2: [afStoryBtn, galleryBtn, configBtn, ExitBtn],
     }
+  }
+
+  async stopEffects() {
+    effectsManager.stopAll()
+    this.container.eventMode = 'none'
+  }
+
+  async show() {
+    const menuLayerManager = stageManager.layerManagers.menuLayer
+    menuLayerManager.whiteBgShow()
+    // 触发动画
+    effectsManager.start('sakura')
+    resizeToCanvas({
+      image: this.mainMenuBgSprite,
+      app: this.app,
+    })
+    await this.initFilter(this.mainMenuBgSprite)
+    if (!this.mainMenuMusic.isPlaying) {
+      this.mainMenuMusic.play()
+    }
+    this.btnRefresh && this.btnRefresh()
+    this.container.eventMode = 'static'
   }
 
   async hide() {
@@ -160,13 +188,12 @@ class MainMenu {
     const mainMenuFadeOut = await fadeOut({
       filter: this.container.filters[0],
     })
-    mainMenuFadeOut
-      .onComplete(() => menuLayerManager.container.eventMode = 'none')
-      .start()
+    mainMenuFadeOut.start()
     tickerManager.addListener('hideMainMenu', () => mainMenuFadeOut.update())
     effectsManager.stopAll()
     const mainMenuMusic = this.assetsPack.GAME_AUDIO['main-menu']
     mainMenuMusic.stop()
+    this.container.eventMode = 'none'
   }
 
   buttonRender({
@@ -182,12 +209,12 @@ class MainMenu {
     btnRow1Container.position.y = 750
     btnRow2Container.position.y = 900
 
-    const btnSpriteRow1 = row1.map((btn) => {
-      tickerManager.addListener('btnRow1InMainMenu', () => btn.tween.update())
+    const btnSpriteRow1 = row1.map((btn, idx) => {
+      tickerManager.addListener(`btnRow1InMainMenu-${idx}`, () => btn.tween.update())
       return btn.view as Sprite
     })
-    const btnSpriteRow2 = row2.map((btn) => {
-      tickerManager.addListener('btnRow2InMainMenu', () => btn.tween.update())
+    const btnSpriteRow2 = row2.map((btn, idx) => {
+      tickerManager.addListener(`btnRow2InMainMenu-${idx}`, () => btn.tween.update())
       return btn.view as Sprite
     })
 
@@ -209,6 +236,26 @@ class MainMenu {
     })
     this.container.addChild(btnRow1Container)
     this.container.addChild(btnRow2Container)
+
+    this.btnRefresh = async () => {
+      const saveDataList: SaveDataList = await localforage.getItem(`${openAVGCore.gameTitle}-saveGame`)
+
+      row1[0].disabled = !(saveDataList && saveDataList[0])
+      row1[0].onClick = () => actions.onContinue(saveDataList[0])
+
+      row1.forEach((btn, idx) => {
+        if (tickerManager.hasListener(`btnRow1InMainMenu-${idx}`)) {
+          tickerManager.removeListener(`btnRow1InMainMenu-${idx}`)
+        }
+        tickerManager.addListener(`btnRow1InMainMenu-${idx}`, () => btn.tween.update())
+      })
+      row2.forEach((btn, idx) => {
+        if (tickerManager.hasListener(`btnRow2InMainMenu-${idx}`)) {
+          tickerManager.removeListener(`btnRow2InMainMenu-${idx}`)
+        }
+        tickerManager.addListener(`btnRow2InMainMenu-${idx}`, () => btn.tween.update())
+      })
+    }
   }
 }
 

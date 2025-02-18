@@ -37,7 +37,7 @@ export class OpenAVGCore {
   setFavicon(iconURL: string) {
     const link: HTMLLinkElement
             = document.querySelector('link[rel*=\'icon\']')
-            || document.createElement('link')
+              || document.createElement('link')
     link.type = 'image/x-icon'
     link.rel = 'shortcut icon'
     link.href = iconURL

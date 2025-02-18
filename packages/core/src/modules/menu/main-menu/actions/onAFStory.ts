@@ -1,3 +1,6 @@
+import { StageType } from '../../../../constants'
+import { stageManager } from '../../../../stage'
+
 export function onAFStory() {
-  window.location.href = 'about:blank'
+  stageManager.currentStage = StageType.GLOBAL
 }

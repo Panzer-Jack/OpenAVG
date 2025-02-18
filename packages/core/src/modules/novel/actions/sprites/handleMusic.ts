@@ -7,6 +7,10 @@ export function handleMusic({ assetName }: { assetName: IMusic }) {
   const hooks = Hooks.getInstance()
   let audioSprite: Sound
 
+  if (hooks.sceneManager.currentScene.music) {
+    hooks.sceneManager.currentScene.music.stop()
+  }
+
   if (typeof assetName === 'string') {
     audioSprite = hooks.assetsPack.GAME_AUDIO[assetName]
   } else {
@@ -14,22 +18,22 @@ export function handleMusic({ assetName }: { assetName: IMusic }) {
     const { name, ...options } = assetName
     for (const key in options) {
       switch (key) {
-        case 'destroy':
-          audioSprite.destroy()
-          hooks.sceneManager.currentScene.music = null
-          return
         case 'pause':
           audioSprite.pause()
           hooks.sceneManager.currentScene.music = null
+          hooks.sceneManager.currentScene.musicAction = null
           return
         case 'stop':
           audioSprite.stop()
           hooks.sceneManager.currentScene.music = null
+          hooks.sceneManager.currentScene.musicAction = null
           return
       }
       audioSprite[key] = options[key]
     }
   }
+  audioSprite.volume = 0.4
   audioSprite.play()
   hooks.sceneManager.currentScene.music = audioSprite
+  hooks.sceneManager.currentScene.musicAction = assetName
 }

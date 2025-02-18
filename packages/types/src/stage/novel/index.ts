@@ -1,14 +1,39 @@
 import type { Sound } from '@pixi/sound'
 import type { Container, Sprite } from 'pixi.js'
 
-export interface IScene {
-  name?: string
+export interface SaveDataList {
+  [number: number]: SaveData
+}
+
+export interface SaveData {
+  title: string
+  filename: string // 脚本文件名
+  sceneName: string
+  img: string
+  time: number
   currentActionsId: number
+  currentSceneId: number
+  currentSprites?: {
+    backgroundAction?: IBackground // 当前生效的背景
+    musicAction?: IMusic //   当前生效的音乐
+    imagesAction?: IImage[] // 当前进行的图片
+  }
+}
+
+export interface IScene {
+  sceneName?: string
+  currentActionsId: number
+  currentSceneId: number
   actionsList: IActions[]
-  background?: Sprite // 存档用，当前生效的背景
-  music?: Sound //   存档用，当前生效的音乐
-  talk?: ITalk // 存档用，当前进行的对话
-  images?: Sprite[] // 存档用，当前进行的图片
+
+  background?: Sprite // 当前生效的背景
+  music?: Sound //   当前生效的音乐
+  images?: Sprite[] // 当前进行的图片
+  talk?: ITalk // 当前进行的对话
+
+  backgroundAction?: IBackground // 当前生效的背景
+  musicAction?: IMusic //   当前生效的音乐
+  imagesAction?: IImage[] // 当前进行的图片
 }
 
 export interface ITalk {
@@ -92,6 +117,7 @@ export interface ISceneRaw {
 
 // 小说JSON数据结构
 export interface IChapter {
+  filename: string
   title: string
   assets: {
     images: IAsset[]

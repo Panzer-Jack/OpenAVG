@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "declaration": true
+    "declaration": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": []
+  "include": [
+    "packages/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "packages/**/node_modules"
+  ]
 }

@@ -92,7 +92,6 @@ class AssetsManager {
       this.isLoading = true
       let _assetsPacks: AssetsPacks
       let progressBarText: string = '加载中...'
-
       switch (type) {
         case StageType.GLOBAL:
           _assetsPacks = this.assetsPacks[StageType.GLOBAL]
@@ -140,7 +139,6 @@ class AssetsManager {
           async loadBundle(bundleName, bundleContents) {
             Assets.addBundle(bundleName, bundleContents)
             const loadedBundle = await Assets.loadBundle(bundleName, (progress) => {
-              console.log('progress', progress)
               progressBar.update(progress * 100, progressBarText)
             })
             _assetsPacks[bundleName] = loadedBundle

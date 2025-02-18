@@ -1,3 +1,4 @@
+import type { StageType } from '@openavg/core'
 import type { MenuLayerManager } from '@openavg/core/src/stage/menu-layer'
 import type { NovelLayerManager } from '@openavg/core/src/stage/novel-layer'
 import type { IGlobalConfig } from '@openavg/types'
@@ -47,6 +48,17 @@ export const useManagers = create(
           novelManager: stageManager.layerManagers.novelLayer,
           menuManager: stageManager.layerManagers.menuLayer,
         })),
+    }),
+  ),
+)
+
+export const useGlobalSignals = create(
+  combine(
+    {
+      currentStage: stageManager.currentStage,
+    },
+    set => ({
+      setCurrentStage: (currentStage: StageType) => set(() => ({ currentStage })),
     }),
   ),
 )

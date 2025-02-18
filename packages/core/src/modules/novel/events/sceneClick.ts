@@ -8,7 +8,7 @@ import Hooks from '../Hooks'
 function sceneClick(event: SceneClickEvents) {
   const hooks = Hooks.getInstance()
   const sceneManager = hooks.sceneManager
-  console.log(event)
+  // console.log(event)
   // 场景切换
   switch (event) {
     case SceneClickEvents.skipType:
@@ -17,8 +17,8 @@ function sceneClick(event: SceneClickEvents) {
     case SceneClickEvents.nextScene:
       sceneManager.nextScene()
       break
-    case SceneClickEvents.nextAction:
-      sceneManager.nextAction()
+    case SceneClickEvents.nextActions:
+      sceneManager.nextActions()
       break
   }
 }
@@ -34,7 +34,7 @@ function sceneClickEvent() {
       } else if (sceneManager.isLastAction) {
         sceneClick(SceneClickEvents.nextScene)
       } else {
-        sceneClick(SceneClickEvents.nextAction)
+        sceneClick(SceneClickEvents.nextActions)
       }
     }
   }, 100)

@@ -35,8 +35,6 @@ async function _exec({
 }
 
 export async function execActions({ actions }: { actions: IActions }) {
-  console.log('actions', actions)
-
   if (actions.background) {
     await _exec({
       actionName: NovelActionType.background,
