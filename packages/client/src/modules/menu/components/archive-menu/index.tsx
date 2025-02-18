@@ -23,11 +23,13 @@ export function ArchiveMenu() {
   const handleDataClick = async ({
     i,
     type,
-    isMainMenu
+    isMainMenu,
+    hasSaveData = false
   }: {
     i: number
-    type: 'load' | 'save',
+    type: 'load' | 'save'
     isMainMenu: boolean
+    hasSaveData?: boolean
   }) => {
     if (type === 'save') {
       await sceneManager.saveGame(i)
@@ -37,8 +39,10 @@ export function ArchiveMenu() {
         type,
       })
     } else {
-      await handleReturn()
-      await sceneManager.loadGame({ i, isMainMenu })
+      if (hasSaveData) {
+        await handleReturn()
+        await sceneManager.loadGame({ i, isMainMenu })
+      }
     }
   }
 
@@ -59,7 +63,9 @@ export function ArchiveMenu() {
           <DataWindow
             key={i}
             saveData={saveGameList[i]}
-            onClick={() => handleDataClick({ i, type, isMainMenu })}
+            onClick={() => {
+              handleDataClick({ i, type, isMainMenu, hasSaveData: true })
+            }}
           />,
         )
       } else {

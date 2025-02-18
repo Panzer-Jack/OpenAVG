@@ -50,7 +50,6 @@ export class CommonButton extends Button {
 
   box: Graphics
   tween: Tween
-  disabled = false
   colors: {
     default: string
     hover: string
@@ -66,11 +65,24 @@ export class CommonButton extends Button {
 
   textOffset = { x: 0, y: 0 }
 
+  set disable(newVal) {
+    this.enabled = !newVal
+    if (!this.enabled) {
+      this.setButtonFillColor(this.colors.disabled, this.width, this.height)
+    } else {
+      this.setButtonFillColor(this.colors.default, this.width, this.height)
+    }
+  }
+
+  get disable() {
+    return !this.enabled
+  }
+
   constructor(props: ButtonProps) {
     super()
     this.view = this.buttonView
-    this.disabled = props.disabled
     this.noGradient = props.noGradient || false // 默认为 false，表示使用渐变
+    this.enabled = !props.disabled
 
     // 设置默认颜色\种类\大小配置
     this.colors = {
@@ -99,7 +111,7 @@ export class CommonButton extends Button {
 
     const box = new Graphics()
     this.box = box
-    if (this.disabled) {
+    if (!this.enabled) {
       this.setButtonFillColor(this.colors.disabled, props.width, props.height)
     } else if (this.checked) {
       this.setButtonFillColor(this.colors.press, props.width, props.height)
@@ -137,7 +149,6 @@ export class CommonButton extends Button {
     this.buttonView.addChild(this.textView)
     this.tween = new Tween(this.buttonView.scale)
 
-    this.enabled = !props.disabled
     if (props.action) {
       this.action = props.action
     }
@@ -192,7 +203,7 @@ export class CommonButton extends Button {
       } else {
       // 否则，使用渐变填充
         const gradientFill = new FillGradient(0, 0, 0, 80)
-        if (this.disabled) {
+        if (!this.enabled) {
           gradientFill.addColorStop(0, new Color(color))
         } else {
           gradientFill.addColorStop(0, new Color('rgb(255, 228, 235, 0.6)'))

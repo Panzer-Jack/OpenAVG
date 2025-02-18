@@ -240,8 +240,9 @@ class MainMenu {
     this.btnRefresh = async () => {
       const saveDataList: SaveDataList = await localforage.getItem(`${openAVGCore.gameTitle}-saveGame`)
 
-      row1[0].disabled = !(saveDataList && saveDataList[0])
+      row1[0].disable = !(saveDataList && saveDataList[0])
       row1[0].onClick = () => actions.onContinue(saveDataList[0])
+      console.log(row1[0].enabled, row1[0].enabled)
 
       row1.forEach((btn, idx) => {
         if (tickerManager.hasListener(`btnRow1InMainMenu-${idx}`)) {
