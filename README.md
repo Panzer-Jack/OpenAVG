@@ -1,7 +1,7 @@
 # OpenAVG
 
 【OpenAVG】一个可以做Galgame和RPG 的 通用冒险游戏引擎
-
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/a0b3e226-0a57-45c9-b502-09de37a8c308" />
 
 [游戏测试](https://demo.openavg.panzer-jack.cn/) 
 [引擎文档](https://doc.openavg.panzer-jack.cn/)
