@@ -1,0 +1,3 @@
+
+./packages/core/src/modules/menu/main-menu/events/resizeMainMenu.ts
+./packages/core/src/modules/menu/main-menu/events/index.ts

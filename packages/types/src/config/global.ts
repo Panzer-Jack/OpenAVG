@@ -1,3 +1,4 @@
+import type { Sound } from '@pixi/sound'
 import type { Application } from 'pixi.js'
 import type { IChapter } from '../stage'
 
@@ -9,6 +10,11 @@ interface IAsset {
 export interface IEffect {
   start: (app: Application) => void
   stop: (app: Application) => void
+}
+
+export interface ISounds {
+  bgm?: Sound[]
+  voice?: Sound[]
 }
 
 export type IEvent<T> = ({

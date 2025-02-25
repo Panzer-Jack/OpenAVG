@@ -62,3 +62,27 @@ export const useGlobalSignals = create(
     }),
   ),
 )
+
+export const useVolumeConfig = create(
+  combine(
+    {
+      mainVolume: 100,
+      bgmVolume: 40,
+      voiceVolume: 100,
+    },
+    set => ({
+      setMainVolume: (mainVolume: number) => set(() => ({ mainVolume })),
+      setBgmVolume: (bgmVolume: number) => set(() => ({ bgmVolume })),
+      setVoiceVolume: (voiceVolume: number) => set(() => ({ voiceVolume })),
+    }),
+  ),
+)
+
+useVolumeConfig.subscribe((state) => {
+  const targetsVolume = {
+    bgm: state.bgmVolume / 100,
+    voice: state.voiceVolume / 100,
+    main: state.mainVolume / 100,
+  }
+  stageManager.soundManager.setVolume(targetsVolume)
+})

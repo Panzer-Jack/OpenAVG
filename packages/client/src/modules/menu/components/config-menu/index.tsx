@@ -1,22 +1,44 @@
-import React, { useState, useEffect } from 'react'
 import Button from '@/components/Button'
-import { actions } from '@openavg/core/src/modules/menu/main-menu/actions'
+import { useVolumeConfig } from '@/store'
 import { actions as configMenuActions } from '@openavg/core/src/modules/menu/config-menu/actions'
+import { actions } from '@openavg/core/src/modules/menu/main-menu/actions'
+import { onExit } from '@openavg/core/src/modules/menu/main-menu/actions/onExit'
+import React, { useEffect, useState } from 'react'
 
-export const ConfigMenu = () => {
-  const [mainVolume, setMainVolume] = useState(50) // 主音量 (0-100)
-  const [characterVolume, setCharacterVolume] = useState(50) // 角色声音 (0-100)
-  const [backgroundMusicVolume, setBackgroundMusicVolume] = useState(50) // 背景音乐 (0-100)
+enum VolumeEnum {
+  mainVolume = 'mainVolume',
+  bgmVolume = 'bgmVolume',
+  voiceVolume = 'voiceVolume',
+}
+
+export function ConfigMenu() {
+  const mainVolume = useVolumeConfig(store => store.mainVolume)
+  const setMainVolume = useVolumeConfig(store => store.setMainVolume)
+  const bgmVolume = useVolumeConfig(store => store.bgmVolume)
+  const setBgmVolume = useVolumeConfig(store => store.setBgmVolume)
+  const voiceVolume = useVolumeConfig(store => store.voiceVolume)
+  const setVoiceVolume = useVolumeConfig(store => store.setVoiceVolume)
+
   const [isFullscreen, setIsFullscreen] = useState(false) // 是否全屏
   const [language, setLanguage] = useState('en') // 语言 (en, zh, etc.)
   const [isShown, setIsShown] = useState(false)
   const [isFading, setIsFading] = useState(false) // 淡入动画状态
-  const [currentPage, setCurrentPage] = useState(1)
-  const pageSize = 12
 
   // 处理音量变化
-  const handleVolumeChange = (setter: React.Dispatch<React.SetStateAction<number>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(Number(e.target.value))
+  const handleVolumeChange = ({
+    type = VolumeEnum.mainVolume,
+  }: {
+    type: VolumeEnum
+  }, e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value)
+    console.log(value)
+    if (type === VolumeEnum.mainVolume) {
+      setMainVolume(value)
+    } else if (type === VolumeEnum.bgmVolume) {
+      setBgmVolume(value)
+    } else if (type === VolumeEnum.voiceVolume) {
+      setVoiceVolume(value)
+    }
   }
 
   // 处理全屏模式
@@ -47,10 +69,6 @@ export const ConfigMenu = () => {
   }
 
   useEffect(() => {
-    setIsFading(true)
-  }, [currentPage])
-
-  useEffect(() => {
     if (isFading) {
       const timer = setTimeout(() => {
         setIsFading(false)
@@ -59,8 +77,8 @@ export const ConfigMenu = () => {
     }
   }, [isFading])
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
+  const handleExit = () => {
+    onExit()
   }
 
   return (
@@ -77,10 +95,13 @@ export const ConfigMenu = () => {
                 min="0"
                 max="100"
                 value={mainVolume}
-                onChange={handleVolumeChange(setMainVolume)}
+                onChange={(event) => handleVolumeChange({ type: VolumeEnum.mainVolume }, event)}
                 className="w-full h-3 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full appearance-none"
               />
-              <span className="block text-center mt-3 text-lg text-gray-700">{mainVolume}%</span>
+              <span className="block text-center mt-3 text-lg text-gray-700">
+                {mainVolume}
+                %
+              </span>
             </div>
 
             {/* 角色音量 */}
@@ -90,11 +111,14 @@ export const ConfigMenu = () => {
                 type="range"
                 min="0"
                 max="100"
-                value={characterVolume}
-                onChange={handleVolumeChange(setCharacterVolume)}
+                value={voiceVolume}
+                onChange={(event) => handleVolumeChange({ type: VolumeEnum.voiceVolume }, event)}
                 className="w-full h-3 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full appearance-none"
               />
-              <span className="block text-center mt-3 text-lg text-gray-700">{characterVolume}%</span>
+              <span className="block text-center mt-3 text-lg text-gray-700">
+                {voiceVolume}
+                %
+              </span>
             </div>
 
             {/* 背景音乐音量 */}
@@ -104,11 +128,14 @@ export const ConfigMenu = () => {
                 type="range"
                 min="0"
                 max="100"
-                value={backgroundMusicVolume}
-                onChange={handleVolumeChange(setBackgroundMusicVolume)}
+                value={bgmVolume}
+                onChange={(event) => handleVolumeChange({ type: VolumeEnum.bgmVolume }, event)}
                 className="w-full h-3 bg-gradient-to-r from-pink-400 to-pink-600 rounded-full appearance-none"
               />
-              <span className="block text-center mt-3 text-lg text-gray-700">{backgroundMusicVolume}%</span>
+              <span className="block text-center mt-3 text-lg text-gray-700">
+                {bgmVolume}
+                %
+              </span>
             </div>
           </div>
 
@@ -156,7 +183,7 @@ export const ConfigMenu = () => {
             className="border-rounded-40px border-none w-150px"
             type="primary"
             size="large"
-            onClick={() => alert('Settings discarded!')}
+            onClick={handleExit}
             loading={false}
           >
             Exit

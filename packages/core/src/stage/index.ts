@@ -7,6 +7,7 @@ import { assetsManager } from '../managers/assets-manager'
 import { effectsManager } from '../managers/effects-manager'
 import { eventManager } from '../managers/event-manager'
 import { tickerManager } from '../managers/ticker-manager'
+import { soundManager } from '../managers/sound-manager'
 import { ApiEnum, StageType } from './../constants'
 import { MenuLayerManager } from './menu-layer'
 
@@ -28,6 +29,7 @@ export class StageManager {
   eventManager = eventManager
   apiManager = apiManager
   tickerManager = tickerManager
+  soundManager = soundManager
 
   private _currentStage: StageType
   private isRender = false
@@ -71,14 +73,17 @@ export class StageManager {
       assets: chapterAssets,
     })
 
+    // 初始化 声音管理器
+    this.soundManager = this.soundManager.init(this.app)
+
     // 初始化 Ticker管理器
     this.tickerManager = this.tickerManager.init(this.app)
 
     // 初始化 事件管理器
-    this.eventManager = eventManager.init(this.app)
+    this.eventManager = this.eventManager.init(this.app)
 
     // 初始化 特效管理器
-    this.effectsManager = effectsManager.init(this.app)
+    this.effectsManager = this.effectsManager.init(this.app)
 
     // 初始化 Stage管理器
     this.layerManagers = {

@@ -2,13 +2,14 @@ import type { IMusic } from '@openavg/types'
 import type { Sound } from '@pixi/sound'
 
 import Hooks from '../../Hooks'
+import { soundManager } from '../../../../managers/sound-manager'
 
 export function handleMusic({ assetName }: { assetName: IMusic }) {
   const hooks = Hooks.getInstance()
   let audioSprite: Sound
 
   if (hooks.sceneManager.currentScene.music) {
-    hooks.sceneManager.currentScene.music.stop()
+    soundManager.stopBgm()
   }
 
   if (typeof assetName === 'string') {
@@ -32,8 +33,7 @@ export function handleMusic({ assetName }: { assetName: IMusic }) {
       audioSprite[key] = options[key]
     }
   }
-  audioSprite.volume = 0.4
-  audioSprite.play()
+  soundManager.playBgm(audioSprite)
   hooks.sceneManager.currentScene.music = audioSprite
   hooks.sceneManager.currentScene.musicAction = assetName
 }

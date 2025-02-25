@@ -2,6 +2,7 @@ import type { ITalkRaw } from '@openavg/types'
 import { Sprite } from 'pixi.js'
 
 import Hooks from '../../Hooks'
+import { soundManager } from '../../../../managers/sound-manager'
 
 export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
   const hooks = Hooks.getInstance()
@@ -36,7 +37,7 @@ export function handleTalk({ assetName }: { assetName: ITalkRaw }) {
 
     if (assetName.speaker.voice) {
       const voiceSprite = assetsPack.CHARACTER_SOUND[assetName.speaker.voice]
-      voiceSprite.play()
+      soundManager.playVoice(voiceSprite)
       speaker.voice = voiceSprite
       // speakerExp.voiceKey = assetName.speaker.voice
     }

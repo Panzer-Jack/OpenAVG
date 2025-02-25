@@ -24,7 +24,7 @@ export function ArchiveMenu() {
     i,
     type,
     isMainMenu,
-    hasSaveData = false
+    hasSaveData = false,
   }: {
     i: number
     type: 'load' | 'save'
@@ -49,7 +49,7 @@ export function ArchiveMenu() {
   function updatePage({
     saveGameList,
     type,
-    isMainMenu = false
+    isMainMenu = false,
   }: {
     saveGameList: SaveDataList
     type: 'load' | 'save'
@@ -89,7 +89,7 @@ export function ArchiveMenu() {
     updatePage({
       saveGameList,
       type: 'load',
-      isMainMenu
+      isMainMenu,
     })
   })
 
@@ -109,7 +109,7 @@ export function ArchiveMenu() {
     setCurrentPage(page)
   }
 
-  const handleReturn = async () => {
+  async function handleReturn() {
     setIsShown(false)
     await archiveMenuActions.onReturn()
     setTimeout(() => {
@@ -117,7 +117,7 @@ export function ArchiveMenu() {
     }, 500)
   }
 
-  const handleExit = () => {
+  function handleExit() {
     actions.onExit()
   }
 

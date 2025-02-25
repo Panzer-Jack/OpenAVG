@@ -12,7 +12,7 @@ import { CommonButton } from '../../../components/button'
 import { fadeIn, fadeOut } from '../../../filters/fade'
 import { scaleToNormal } from '../../../filters/zoom'
 import { assetsManager } from '../../../managers/assets-manager'
-
+import { soundManager } from '../../../managers/sound-manager'
 import { effectsManager } from '../../../managers/effects-manager'
 import { tickerManager } from '../../../managers/ticker-manager'
 import { stageManager } from '../../../stage'
@@ -20,6 +20,7 @@ import { centerView, row } from '../../../utils/layout'
 import { resizeToCanvas } from '../../../utils/resize'
 import { actions } from './actions'
 import './events'
+
 
 class MainMenu {
   app: Application
@@ -100,7 +101,7 @@ class MainMenu {
       this.container.addChild(mainMenuBgSprite)
       this.container.addChild(title)
       mainMenuMusic.loop = true
-      mainMenuMusic.play()
+      soundManager.playBgm(mainMenuMusic)
 
       // 触发动画
       effectsManager.start('sakura')
