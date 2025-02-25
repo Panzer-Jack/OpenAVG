@@ -18,7 +18,9 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "tsup",
+    "preinstall": "npx only-allow pnpm",
+    "build:game": "pnpm -C packages/client vite build",
+    "dev": "pnpm -C packages/client dev",
     "lint": "eslint 'packages/**/*.{ts,tsx}'",
     "lint:fix": "eslint . --fix"
   },
