@@ -144,7 +144,7 @@ importers:
         version: 6.0.1(pixi.js@8.8.0)
       '@pixi/ui':
         specifier: ^2.2.1
-        version: 2.2.1(pixi.js@8.8.0)
+        version: 2.2.4(pixi.js@8.8.0)
       '@tweenjs/tween.js':
         specifier: ^25.0.0
         version: 25.0.0
@@ -1607,8 +1607,8 @@ packages:
       pixi.js: 8.8.0
     dev: false
 
-  /@pixi/ui@2.2.1(pixi.js@8.8.0):
-    resolution: {integrity: sha512-VIltIIZ8yFcrmBWQ3vzoBUo++yrCjmUOBSDNdinxYmDkGDpVOqFHnBi7xU7IiZXBKaNYntjI3M6AV7LWVwLt4Q==}
+  /@pixi/ui@2.2.4(pixi.js@8.8.0):
+    resolution: {integrity: sha512-/OVdrC5F7qomRsAubHOtgiOSWLM85Yrod6MMgVQnD/qTDj4OSaxlmx2l8dMFUX6Bjslkl9dUN92vv8bM103BnQ==}
     peerDependencies:
       pixi.js: ^8.6.2
     dependencies:
